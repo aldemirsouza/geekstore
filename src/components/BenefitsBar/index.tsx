@@ -1,42 +1,66 @@
+"use client";
+
 import { CardIcon } from "../icons/CardIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { SecurityIcon } from "../icons/SecurityIcon";
 import { ShippingIcon } from "../icons/ShippingIcon";
 
 export function BenefitsBar() {
+  const benefits = [
+    {
+      icon: <ShippingIcon />,
+      title: "Frete grátis",
+      desc: "Acima de R$ 199",
+    },
+    {
+      icon: <CardIcon />,
+      title: "12x sem Juros",
+      desc: "No cartão de crédito",
+    },
+    {
+      icon: <SecurityIcon />,
+      title: "Compra Segura",
+      desc: "SSL e criptografia",
+    },
+    {
+      icon: <PhoneIcon />,
+      title: "Atendimento",
+      desc: "Segunda a Sábado",
+    },
+  ];
+
   return (
     <div className="bg-white border-b border-gray-200">
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
-        <div className="flex items-center">
-          <ShippingIcon />
-          <strong className="ml-2 text-[#101828]">
-            Frete grátis <br />
-            <span className="text-[14px] font-normal leading-[20px]">Acima de R$ 199</span>
-          </strong>
+      <div className="container mx-auto py-6">
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:hidden">
+          {benefits.map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center min-w-full snap-center justify-center"
+            >
+              {item.icon}
+              <strong className="ml-2 text-[#101828]">
+                {item.title} <br />
+                <span className="text-[14px] font-normal leading-[20px]">
+                  {item.desc}
+                </span>
+              </strong>
+            </div>
+          ))}
         </div>
 
-        <div className="flex items-center">
-          <CardIcon />
-          <strong className="ml-2 text-[#101828]">
-            12x sem Juros <br />
-            <span className="text-[14px] font-normal leading-[20px]">No cartão de crédito</span>
-          </strong>
-        </div>
-
-        <div className="flex items-center">
-          <SecurityIcon />
-          <strong className="ml-2 text-[#101828]">
-            Compra Segura <br />
-            <span className="text-[14px] font-normal leading-[20px]">SSL e criptografia</span>
-          </strong>
-        </div>
-
-        <div className="flex items-center">
-          <PhoneIcon />
-          <strong className="ml-2 text-[#101828]">
-            Atendimento <br />
-            <span className="text-[14px] font-normal leading-[20px]">Segunda a Sábado</span>
-          </strong>
+        <div className="hidden md:flex justify-between items-center">
+          {benefits.map((item, idx) => (
+            <div key={idx} className="flex items-center">
+              {item.icon}
+              <strong className="ml-2 text-[#101828]">
+                {item.title} <br />
+                <span className="text-[14px] font-normal leading-[20px]">
+                  {item.desc}
+                </span>
+              </strong>
+            </div>
+          ))}
         </div>
       </div>
     </div>
