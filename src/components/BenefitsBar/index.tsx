@@ -29,7 +29,7 @@ export function BenefitsBar() {
 
   return (
     <div className="bg-white border-b border-gray-200">
-      <div className="container mx-auto py-6">
+      <div className=" max-w-[1055px] container mx-auto py-6">
         <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:hidden">
           {benefits.map((item, idx) => (
             <div
@@ -49,7 +49,7 @@ export function BenefitsBar() {
 
         <div className="hidden md:flex justify-between items-center">
           {benefits.map((item, idx) => (
-            <div key={idx} className="flex items-center">
+            <div key={idx} className="flex items-center  gap-4">
               {item.icon}
               <strong className="ml-2 text-[#101828]">
                 {item.title} <br />

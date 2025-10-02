@@ -53,7 +53,7 @@ export function Slider({ banners }: SliderProps) {
               className="object-cover"
             />
 
-            <div className="container mx-auto absolute inset-0 flex flex-col justify-center items-center md:items-start text-white px-4 md:px-0 text-center md:text-left">
+            <div className="max-w-[1055px] container mx-auto absolute inset-0 flex flex-col justify-center items-center md:items-start text-white px-4 md:px-0 text-center md:text-left">
               <span className="text-[16px] font-normal leading-[24px] text-secondary">{banner.headline}</span>
 
               <h2 className="text-[48px] font-bold leading-[48px] mt-2">{banner.title}</h2>

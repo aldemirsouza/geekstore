@@ -3,11 +3,11 @@ import { Newsletter } from "../Newsletter";
 
 export function Footer() {
   return (
-    <div className="bg-primary py-12">
+    <div className="bg-primary pt-12">
       <Newsletter />
 
-      <footer className=" text-white px-6 py-10">
-        <div className="max-w-[1055px] mx-auto flex flex-col sm:flex-row sm:justify-between gap-10">
+      <footer className=" text-white pt-10 border-t border-[rgba(255,255,255,0.10)]">
+        <div className="px-6 max-w-[1055px] mx-auto flex flex-col  sm:flex-row sm:justify-between gap-10 sm:px-0">
 
           <div className="flex-1 flex flex-col gap-6">
             <h2 className="text-[24px] font-bold leading-[32px] tracking-[-0.312px]">GeekStore</h2>
@@ -108,12 +108,65 @@ export function Footer() {
               </li>
 
               <li className="text-white/80 text-[16px] font-normal leading-[24px] tracking-[-0.312px]">
-                <span className="font-semibold">Horário de Atendimento</span><br />
+                <span className="text-white text-[16px] font-bold leading-[24px] tracking-[-0.312px]">Horário de Atendimento</span><br />
                 Segunda a Sexta: 8h às 18h<br />
                 Sábado: 8h às 14h
               </li>
             </ul>
           </nav>
+        </div>
+
+        <div className="border-t border-[rgba(255,255,255,0.10)] mt-12">
+          <div
+            className="max-w-[1055px] mx-auto flex flex-col items-center justify-center text-center py-6 gap-4 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+            <p
+              className="text-[rgba(255,255,255,0.60)] text-[14px] font-normal leading-5 tracking-[-0.15px] py-6 sm:py-0"
+            >
+              © 2024 GeekStore. Todos os direitos reservados.
+            </p>
+
+            <nav>
+              <ul
+                className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+                <li>
+                  <a
+                    href=""
+                    className="
+              text-[rgba(255,255,255,0.60)]
+              text-[14px] font-normal leading-5 tracking-[-0.15px]
+              transition-colors duration-300 hover:text-[#F5AB00]
+            "
+                  >
+                    Política de Privacidade
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href=""
+                    className="
+              text-[rgba(255,255,255,0.60)]
+              text-[14px] font-normal leading-5 tracking-[-0.15px]
+              transition-colors duration-300 hover:text-[#F5AB00]
+            "
+                  >
+                    Termos de Uso
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href=""
+                    className="
+              text-[rgba(255,255,255,0.60)]
+              text-[14px] font-normal leading-5 tracking-[-0.15px]
+              transition-colors duration-300 hover:text-[#F5AB00]
+            "
+                  >
+                    Cookies
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </footer>
     </div>

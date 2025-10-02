@@ -13,7 +13,7 @@ export function Header() {
     <header className="bg-white">
       <TopBar />
 
-      <div className="container mx-auto px-4 md:px-0 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-gray-200">
+      <div className=" max-w-[1055px] container mx-auto px-4 md:px-0 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-gray-200">
 
         <div className="flex justify-center md:justify-start items-center w-full md:w-auto relative">
           <button

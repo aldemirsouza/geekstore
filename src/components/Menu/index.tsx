@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Menu() {
   return (
-    <nav className="hidden md:block container mx-auto pb-2">
+    <nav className="hidden md:block container mx-auto pb-2  max-w-[1055px]">
       <ul className="flex gap-[51px] items-center text-black">
         <li className="bg-[#F8F8F8] rounded-md px-4 py-2">
           <Link
