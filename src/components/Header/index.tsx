@@ -23,7 +23,7 @@ export function Header() {
             {isMenuOpen ? <X size={24} color="#000000" /> : <MenuIcon size={24} color="#000000" />}
           </button>
 
-          <div className="text-[24px] font-extrabold text-primary">GeekStore</div>
+          <h1 className="text-[24px] font-extrabold text-primary">GeekStore</h1>
 
           <div className="absolute right-0 flex gap-4 md:hidden">
             <Link href="/login">

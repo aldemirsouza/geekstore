@@ -1,5 +1,3 @@
-"use client";
-
 import { CardIcon } from "../icons/CardIcon";
 import { PhoneIcon } from "../icons/PhoneIcon";
 import { SecurityIcon } from "../icons/SecurityIcon";
