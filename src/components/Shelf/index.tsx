@@ -15,7 +15,7 @@ export function Shelf() {
         <CountdownShelf 
           targetDateString="2025-10-10 23:59:59"
           title="Black Friday | Ofertas Relâmpago"
-          description="Aproveite os descontos imperdíveis antes que acabem!"
+          description="Aproveite descontos imperdíveis antes que acabem!"
         />
         <ProductSlider />
       </div>

@@ -53,12 +53,12 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
   }, [targetDateString]);
 
   return (
-    <section className="py-10">
+    <section className="pt-8">
       <div className="max-w-[1055px] mx-auto px-2 sm:px-0">
 
         <div className="flex flex-col sm:flex-row justify-between items-center mb-2 p-4 bg-gray-50 border-l-4 border-secondary rounded-lg shadow-sm">
           <div className="text-center sm:text-left mb-4 sm:mb-0">
-            <h2 className="text-3xl font-extrabold text-black sm:text-3xl">
+            <h2 className="text-3xl font-extrabold text-primary sm:text-3xl">
               {title}
             </h2>
             <p className="text-md text-gray-600 mt-1">
@@ -71,7 +71,7 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
               <React.Fragment key={unit}>
 
                 <div className="flex flex-col items-center">
-                  <span className="text-3xl font-bold text-primary">{String(value)}</span>
+                  <span className="text-3xl font-bold text-red-500">{String(value)}</span>
                   <span className="text-xs font-medium text-gray-700 uppercase">
                     {unitTranslations[unit as keyof typeof unitTranslations]}
                   </span>

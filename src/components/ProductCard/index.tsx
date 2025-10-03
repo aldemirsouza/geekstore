@@ -6,7 +6,6 @@ import { Product } from "@/mocks/productsData";
 import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
 
-
 interface ProductCardProps {
   product: Product;
 }

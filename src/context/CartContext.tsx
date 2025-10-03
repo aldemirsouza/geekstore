@@ -20,16 +20,19 @@ interface CartContextType {
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 const LOCAL_STORAGE_KEY = 'ecomm_cart';
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  useEffect(() => {
+const initializeCart = (): CartItem[] => {
+  if (typeof window !== 'undefined') {
     const savedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+      return JSON.parse(savedCart) as CartItem[];
     }
-  }, []);
+  }
+  return [];
+};
+
+export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>(initializeCart);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
