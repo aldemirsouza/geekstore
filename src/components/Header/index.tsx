@@ -5,9 +5,13 @@ import { TopBar } from "../TopBar";
 import Link from "next/link";
 import { User, ShoppingCart, Menu as MenuIcon, X } from 'lucide-react';
 import { Menu } from "../Menu";
+import { CartViewer } from "../CartViewer";
+
+import { useCart } from "@/hooks/useCart";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { totalQuantity } = useCart();
 
   return (
     <header className="bg-white">
@@ -43,15 +47,35 @@ export function Header() {
           <Link href="/login" className="flex items-center gap-2 text-black hover:text-gray-600">
             <User size={20} /> Entrar
           </Link>
-          <Link href="/contact" className="flex items-center gap-2 text-black hover:text-gray-600">
+          <button className="flex items-center gap-2 text-black hover:text-gray-600 relative">
             <ShoppingCart size={20} /> Carrinho
-          </Link>
+            <span
+              className="
+              absolute 
+              -top-3
+              -right-4
+              bg-[#F5AB00] 
+              text-primary 
+              text-[12px] 
+              font-medium
+              rounded-full 
+              h-5 
+              min-w-5 
+              flex 
+              items-center 
+              justify-center"
+            >
+              {totalQuantity}
+            </span>
+          </button>
         </div>
       </div>
 
       <div className="hidden md:block w-full">
         <Menu />
       </div>
+
+      <CartViewer />
 
       {isMenuOpen && (
         <div className="md:hidden px-4 pb-4">
