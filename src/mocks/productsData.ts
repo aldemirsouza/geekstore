@@ -55,4 +55,15 @@ export const mockProducts: Product[] = [
     bestPrice: "R$ 89.99",
     sellerPrice: "R$ 129.99",
   },
+  {
+    id: 5,
+    name: "Gaming Mouse RGB Pro 2",
+    image: "/assets/image1.png",
+    discount: "-20%",
+    highlight: "Promoção N1",
+    rating: 4,
+    reviews: 892,
+    bestPrice: "R$ 109.99",
+    sellerPrice: "R$ 129.99",
+  },
 ];

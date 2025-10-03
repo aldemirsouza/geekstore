@@ -1,4 +1,4 @@
-import { CardShelf } from "../CardShelf";
+import { ProductSlider } from "../ProductSlider";
 
 export function Shelf() {
   return (
@@ -11,7 +11,7 @@ export function Shelf() {
           Os melhores jogos e acessórios selecionados especialmente para você
         </p>
 
-        <CardShelf />
+        <ProductSlider />
       </div>
     </div>
   );

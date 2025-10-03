@@ -26,6 +26,10 @@ export function Newsletter() {
       setMessage(`E-mail ${email} inscrito com sucesso!`);
       setIsError(false);
       setEmail("");
+
+      setTimeout(() => {
+        setMessage('')
+      }, 2000);
     }, 1500);
   };
 

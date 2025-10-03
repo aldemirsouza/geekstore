@@ -4,6 +4,8 @@ import { Star, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { Product } from "@/mocks/productsData";
 import { useCart } from "@/hooks/useCart";
+import { useState } from "react";
+
 
 interface ProductCardProps {
   product: Product;
@@ -11,10 +13,27 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  const message = `Produto ${product.name} adicionado ao carrinho!`
 
   const handleAddToCart = () => {
-    addToCart(product); 
-    console.log(`Produto "${product.name}" adicionado ao carrinho!`);
+    if (isLoading) return;
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      addToCart(product);
+      setIsLoading(false);
+      setShowMessage(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        setShowMessage(false);
+      }, 4000);
+
+    }, 800);
+
   };
 
   return (
@@ -35,7 +54,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </span>
       </div>
 
-      <div className="flex flex-col p-4 gap-2 flex-1">
+      <div className="flex flex-col p-4 gap-2 flex-1 relative">
         <span className="bg-[#F5AB00] text-primary text-xs px-3 py-1 rounded-[8px] self-start">
           {product.highlight}
         </span>
@@ -75,10 +94,27 @@ export function ProductCard({ product }: ProductCardProps) {
             onClick={handleAddToCart}
             className="flex items-center gap-2 bg-[#09235C] text-white px-6 py-2 rounded-md text-sm font-medium hover:filter hover:brightness-90 transition cursor-pointer">
             <ShoppingCart size={16} />
-            Adicionar
+            {isLoading ? "Adicinando..." : "Adicionar"}
           </button>
         </div>
       </div>
+
+      {showMessage && (
+        <div
+          className={`
+          min-h-[74px]
+          p-2 absolute 
+          top-[50%] left-0 right-0
+          bg-green-600
+          text-sm text-white font-medium
+          transition-transform duration-300 ease-out
+          transform translate-y-full
+          ${showMessage ? 'opacity-100' : 'opacity-0 pointer-events-none'} 
+        `}
+        >
+          {message}
+        </div>
+      )}
     </div>
   )
 }

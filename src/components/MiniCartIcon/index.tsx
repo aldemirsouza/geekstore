@@ -8,7 +8,7 @@ import { useCart } from "@/hooks/useCart";
 export function MiniCartIcon() {
   const { totalQuantity, openSidebar } = useCart();
   const badgeClasses = `
-   absolute -top-3 -right-3 sm:-right-4
+    absolute -top-3 -right-3 sm:-right-4
     bg-[#F5AB00] text-primary text-[12px] font-medium
     rounded-full h-5 min-w-5 flex items-center justify-center
     transition-colors duration-300

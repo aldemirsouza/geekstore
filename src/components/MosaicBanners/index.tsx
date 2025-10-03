@@ -1,48 +1,9 @@
-interface Banners {
-  id: number;
-  image: string;
-  headline: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  buttonLink: string;
-}
-
-const banners: Banners[] = [
-  {
-    id: 1,
-    image: "/assets/banner-1.png",
-    headline: "PS5 & Xbox Series X/S",
-    title: "Console Generation",
-    description: "Os consoles mais poderosos da nova geração",
-    buttonText: "Ver Consoles",
-    buttonLink: "/",
-  },
-  {
-    id: 2,
-    image: "/assets/banner-2.png",
-    headline: "Nostalgia em Alta",
-    title: "Retro Gaming",
-    description: "Clássicos que marcaram época",
-    buttonText: "Explorar",
-    buttonLink: "/",
-  },
-  {
-    id: 3,
-    image: "/assets/banner-3.png",
-    headline: "Performance Máxima",
-    title: "Acessórios Gaming",
-    description: "Headsets, mouses e teclados pro",
-    buttonText: "Ver Acessórios",
-    buttonLink: "/",
-  },
-];
+import { banners } from "@/mocks/mosaicBannersData";
 
 export function MosaicBanners() {
   return (
     <div className="px-4 lg:px-0 max-w-[992px] mx-auto mt-20 mb-20">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto] md:gap-6">
-        {/* Banner maior */}
         <div className="relative w-full h-[200px] md:h-[408.5px] rounded-[8px] overflow-hidden">
           <img
             src={banners[0].image}
@@ -61,7 +22,7 @@ export function MosaicBanners() {
             </p>
             <a
               href={banners[0].buttonLink}
-              className="rounded-[8.17px] bg-[#F5AB00] px-4 py-2"
+              className="rounded-[8.17px] bg-[#F5AB00] px-4 py-2 hover:brightness-125 transition ease-in-out duration-300"
             >
               <span className="text-[#09235C] text-[14.298px] font-medium leading-[20.425px] tracking-[-0.154px]">
                 {banners[0].buttonText}
@@ -70,7 +31,6 @@ export function MosaicBanners() {
           </div>
         </div>
 
-        {/* Banners menores */}
         <div className="flex flex-col gap-4 md:gap-6 mt-4 md:mt-0">
           {banners.slice(1).map((banner) => (
             <div
@@ -94,7 +54,7 @@ export function MosaicBanners() {
                 </p>
                 <a
                   href={banner.buttonLink}
-                  className="rounded-[8.17px] bg-[#F5AB00] px-3 py-[6px]"
+                  className="rounded-[8.17px] bg-[#F5AB00] px-3 py-[6px] hover:brightness-125 transition ease-in-out duration-300"
                 >
                   <span className="text-[#09235C] text-[14px] font-medium leading-[20.425px] tracking-[-0.154px]">
                     {banner.buttonText}
