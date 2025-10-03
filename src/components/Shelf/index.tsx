@@ -1,3 +1,4 @@
+import { CountdownShelf } from "../CountdownShelf";
 import { ProductSlider } from "../ProductSlider";
 
 export function Shelf() {
@@ -11,6 +12,11 @@ export function Shelf() {
           Os melhores jogos e acessórios selecionados especialmente para você
         </p>
 
+        <CountdownShelf 
+          targetDateString="2025-10-10 23:59:59"
+          title="Black Friday | Ofertas Relâmpago"
+          description="Aproveite os descontos imperdíveis antes que acabem!"
+        />
         <ProductSlider />
       </div>
     </div>

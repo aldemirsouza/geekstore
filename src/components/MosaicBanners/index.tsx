@@ -22,7 +22,7 @@ export function MosaicBanners() {
             </p>
             <a
               href={banners[0].buttonLink}
-              className="rounded-[8.17px] bg-[#F5AB00] px-4 py-2 hover:brightness-125 transition ease-in-out duration-300"
+              className="rounded-[8.17px] bg-[#F5AB00] px-4 py-2  hover:brightness-90 transition"
             >
               <span className="text-[#09235C] text-[14.298px] font-medium leading-[20.425px] tracking-[-0.154px]">
                 {banners[0].buttonText}
@@ -54,7 +54,7 @@ export function MosaicBanners() {
                 </p>
                 <a
                   href={banner.buttonLink}
-                  className="rounded-[8.17px] bg-[#F5AB00] px-3 py-[6px] hover:brightness-125 transition ease-in-out duration-300"
+                  className="rounded-[8.17px] bg-[#F5AB00] px-3 py-[6px]  hover:brightness-90 transition"
                 >
                   <span className="text-[#09235C] text-[14px] font-medium leading-[20.425px] tracking-[-0.154px]">
                     {banner.buttonText}
