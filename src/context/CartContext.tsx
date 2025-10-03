@@ -12,6 +12,9 @@ interface CartContextType {
   cartCount: number;
   totalQuantity: number;
   addToCart: (product: Product) => void;
+  isSidebarOpen: boolean;
+  openSidebar: () => void;
+  closeSidebar: () => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -19,6 +22,7 @@ const LOCAL_STORAGE_KEY = 'ecomm_cart';
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const savedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -51,8 +55,12 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const cartCount = cartItems.length;
 
+  const openSidebar = () => setIsSidebarOpen(true);
+  const closeSidebar = () => setIsSidebarOpen(false);
+
+
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, totalQuantity, addToCart }}>
+    <CartContext.Provider value={{ cartItems, cartCount, totalQuantity, addToCart, isSidebarOpen, openSidebar, closeSidebar }}>
       {children}
     </CartContext.Provider>
   );
