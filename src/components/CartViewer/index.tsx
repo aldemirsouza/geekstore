@@ -1,9 +1,13 @@
 'use client'
 
 import { useCart } from "@/hooks/useCart";
+import { CartItemComponent } from "@/components/CartItemComponent";
 
 export function CartViewer() {
-  const { cartItems } = useCart();
+  const { cartItems, isInitialized } = useCart();
+  if (!isInitialized) {
+    return <p className="text-gray-500 italic">Carregando itens...</p>;
+  }
 
   return (
     <div className="mt-4">
@@ -12,22 +16,7 @@ export function CartViewer() {
       ) : (
         <ul className="space-y-3">
           {cartItems.map(item => (
-            <li
-              key={item.id}
-              className="flex justify-between items-center p-3 border-b last:border-b-0 bg-gray-50 rounded-md gap-4"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-12 h-12 object-cover"
-              />
-              <span className="text-sm font-bold text-[#101828]">
-                {item.name}
-              </span>
-              <span className="text-sm font-bold text-gray-700 flex flex-col items-center">
-               <strong> Qtd</strong> {item.quantity}
-              </span>
-            </li>
+            <CartItemComponent key={item.id} item={item} />
           ))}
         </ul>
       )}

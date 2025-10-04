@@ -40,17 +40,59 @@ const calculateTimeLeft = (targetDateString: string): TimeLeft | null => {
 };
 
 export function CountdownShelf({ targetDateString, title, description }: CountdownShelfProps) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(
-    calculateTimeLeft(targetDateString)
-  );
+
+  // 1. Inicialização Segura: useState com null, isMounted para controle
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // 2. Carrega o valor inicial e inicia o timer APENAS no cliente
+    setTimeLeft(calculateTimeLeft(targetDateString));
+    setIsMounted(true);
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft(targetDateString));
     }, 1000);
 
     return () => clearInterval(timer);
   }, [targetDateString]);
+
+  const renderTimeDisplay = (time: TimeLeft | null) => {
+    if (!time && isMounted) {
+      return <p className="text-xl font-bold text-primary">Tempo Esgotado!</p>;
+    }
+
+    if (!isMounted) {
+      return (
+        <p className="text-xl font-bold text-gray-500 animate-pulse">
+          Carregando...
+        </p>
+      );
+    }
+
+    if (!time) {
+      return <p className="text-xl font-bold text-primary">Oferta Encerrada!</p>;
+    }
+
+    return Object.entries(time).map(([unit, value], index) => (
+      <React.Fragment key={unit}>
+
+        <div className="flex flex-col items-center">
+          <span className="text-3xl font-bold text-red-500">
+            {String(value).padStart(2, '0')}
+          </span>
+          <span className="text-xs font-medium text-gray-600 uppercase">
+            {unitTranslations[unit as keyof typeof unitTranslations]}
+          </span>
+        </div>
+
+        {index < Object.keys(time).length - 1 && (
+          <span className="text-2xl font-bold text-black">:</span>
+        )}
+      </React.Fragment>
+    ));
+  };
+
 
   return (
     <section className="pt-8">
@@ -67,21 +109,7 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
           </div>
 
           <div className="flex gap-4 items-center justify-center">
-            {Object.entries(timeLeft!).map(([unit, value], index) => (
-              <React.Fragment key={unit}>
-
-                <div className="flex flex-col items-center">
-                  <span className="text-3xl font-bold text-red-500">{String(value)}</span>
-                  <span className="text-xs font-medium text-gray-600 uppercase">
-                    {unitTranslations[unit as keyof typeof unitTranslations]}
-                  </span>
-                </div>
-
-                {index < Object.keys(timeLeft!).length - 1 && (
-                  <span className="text-2xl font-bold text-black">:</span>
-                )}
-              </React.Fragment>
-            ))}
+            {renderTimeDisplay(timeLeft)}
           </div>
         </div>
       </div>

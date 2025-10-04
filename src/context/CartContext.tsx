@@ -3,7 +3,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { Product } from "@/mocks/productsData";
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   quantity: number;
 }
 
@@ -11,32 +11,40 @@ interface CartContextType {
   cartItems: CartItem[];
   cartCount: number;
   totalQuantity: number;
+  cartTotal: number;
   addToCart: (product: Product) => void;
   isSidebarOpen: boolean;
   openSidebar: () => void;
   closeSidebar: () => void;
+  removeFromCart: (productId: number) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void
+  isInitialized: boolean;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 const LOCAL_STORAGE_KEY = 'ecomm_cart';
 
-const initializeCart = (): CartItem[] => {
-  if (typeof window !== 'undefined') {
-    const savedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (savedCart) {
-      return JSON.parse(savedCart) as CartItem[];
-    }
-  }
-  return [];
-};
-
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initializeCart);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (!isInitialized) {
+      const savedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart) as CartItem[]);
+      }
+      setIsInitialized(true);
+    }
+  }, [isInitialized]);
+
+  useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
+    }
+  }, [cartItems, isInitialized]);
 
   const addToCart = (product: Product) => {
     setCartItems(prevItems => {
@@ -61,9 +69,39 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const openSidebar = () => setIsSidebarOpen(true);
   const closeSidebar = () => setIsSidebarOpen(false);
 
+  const removeFromCart = (productId: number) => {
+    setCartItems(prevItems => prevItems.filter(item => item.id !== productId));
+  };
+
+  const updateQuantity = (productId: number, amount: number) => {
+    setCartItems(prevItems => {
+      return prevItems.map(item => {
+        if (item.id === productId) {
+          const newQuantity = item.quantity + amount;
+
+          if (newQuantity <= 0) {
+            return null;
+          }
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      }).filter(item => item !== null) as CartItem[];
+    });
+  };
+
+  const increaseQuantity = (productId: number) => updateQuantity(productId, 1);
+  const decreaseQuantity = (productId: number) => updateQuantity(productId, -1);
+
+  const cartTotal = cartItems.reduce((sum, item) =>
+    sum + (item.bestPrice * item.quantity), 0);
+
+  const value = {
+    cartItems, cartCount, totalQuantity, addToCart, isSidebarOpen, cartTotal, openSidebar, closeSidebar, removeFromCart, increaseQuantity, decreaseQuantity, isInitialized
+  };
+
 
   return (
-    <CartContext.Provider value={{ cartItems, cartCount, totalQuantity, addToCart, isSidebarOpen, openSidebar, closeSidebar }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );

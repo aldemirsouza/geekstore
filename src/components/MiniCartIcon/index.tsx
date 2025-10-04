@@ -4,7 +4,15 @@ import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 
 export function MiniCartIcon() {
-  const { cartCount, openSidebar } = useCart();
+  const { cartCount, openSidebar, isInitialized } = useCart();
+
+  const CartCounter = () => {
+    if (!isInitialized) {
+      return <span className="text-sm font-semibold">0</span>;
+    }
+    return <span className="text-sm font-semibold">{cartCount}</span>;
+  };
+
   const badgeClasses = `
     absolute -top-3 -right-3 sm:-right-4
     bg-[#F5AB00] text-primary text-[12px] font-medium
@@ -19,7 +27,9 @@ export function MiniCartIcon() {
     >
       <ShoppingCart size={20} className="" />
       <span className="hidden sm:block">Carrinho</span>
-      <span className={badgeClasses}>{cartCount}</span>
+      <span className={badgeClasses}>
+        <CartCounter />
+      </span>
     </button>
   );
 }

@@ -5,9 +5,9 @@ import { useCart } from "@/hooks/useCart";
 import { CartViewer } from "@/components/CartViewer";
 
 export function CartSidebar() {
-  const { cartCount } = useCart();
-  const { isSidebarOpen, closeSidebar } = useCart();
-  const itemText = cartCount === 1 ? 'item' : 'itens';
+  const { cartCount, isSidebarOpen, closeSidebar, isInitialized } = useCart();
+  const displayCount = isInitialized ? cartCount : 0;
+  const itemText = displayCount === 1 ? 'item' : 'itens';
 
   return (
     <>
