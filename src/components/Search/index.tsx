@@ -21,6 +21,17 @@ export function Search() {
   const [isFocused, setIsFocused] = useState(false);
   const router = useRouter();
 
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
+
+    if (query.trim()) {
+      setIsFocused(false);
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
   useEffect(() => {
     if (query.length > 2) {
       const fetchSuggestions = async () => {
@@ -33,13 +44,6 @@ export function Search() {
     }
   }, [query]);
 
-  const handleSearch = () => {
-    if (query.trim()) {
-      setIsFocused(false);
-      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
-    }
-  };
-
   const handleSuggestionClick = (productName: string) => {
     setIsFocused(false);
     router.push(`/produtos/${productName.toLowerCase().replace(/\s/g, '-')}`);
@@ -50,7 +54,7 @@ export function Search() {
   return (
     <div className="w-full md:max-w-[596px] relative" onBlur={() => setTimeout(() => setIsFocused(false), 150)}>
 
-      <div className="flex">
+      <form className="flex" onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Buscar jogos, consoles, produtos geek..."
@@ -58,22 +62,16 @@ export function Search() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsFocused(true)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch();
-            }
-          }}
         />
 
         <button
-          type="button"
-          onClick={handleSearch}
+          type="submit"
           className="w-[50px] absolute right-0 top-0 bottom-0 bg-[#09235C] p-2 rounded-r-md flex items-center justify-center text-white 
-                    hover:bg-[#F5AB00] transition duration-200 cursor-pointer"
+          hover:bg-[#F5AB00] transition duration-200 cursor-pointer"
         >
           <SearchIcon size={20} />
         </button>
-      </div>
+      </form>
 
       {showDropdown && (
         <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto">
@@ -92,10 +90,10 @@ export function Search() {
           ) : (
             query.length > 2 && <div className="p-3 text-sm text-gray-500">Nenhum produto encontrado.</div>
           )}
-          
+
           <div
             className="p-3 bg-gray-50 text-center text-sm text-primary hover:bg-gray-200 cursor-pointer border-t"
-            onMouseDown={handleSearch}
+            onMouseDown={() => handleSearch()}
           >
             Ver todos os resultados para "{query}"
           </div>
