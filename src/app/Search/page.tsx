@@ -4,11 +4,12 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { getAllProducts } from "@/mocks/productsData";
 import { Product } from "@/mocks/productsData";
 
+// NOVO TIPO: Envolve o objeto searchParams em uma Promise
 interface SearchPageProps {
-  searchParams: {
+  searchParams: Promise<{
     q?: string | string[];
     [key: string]: string | string[] | undefined;
-  };
+  }>;
 }
 
 const filterProducts = (products: Product[], query: string): Product[] => {
@@ -20,7 +21,8 @@ const filterProducts = (products: Product[], query: string): Product[] => {
   );
 };
 
-export default async function SearchPage({ searchParams }: SearchPageProps) {
+export default async function SearchPage(props: SearchPageProps) {
+  const searchParams = await props.searchParams;
   const queryValue = searchParams.q;
 
   const rawQueryValue = Array.isArray(queryValue)
