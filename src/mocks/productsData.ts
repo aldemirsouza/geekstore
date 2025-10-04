@@ -78,3 +78,7 @@ export const mockProducts: Product[] = [
     sellerPrice: "R$ 149.99",
   },
 ];
+
+export const getAllProducts = (): Product[] => {
+  return mockProducts
+}

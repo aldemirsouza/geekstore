@@ -8,6 +8,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import Link from "next/link";
 
 const products = mockProducts;
 
@@ -44,19 +45,12 @@ export function ProductSlider() {
       </Swiper>
 
       <div className="flex justify-center mt-14">
-        <button
-          className="rounded-[8px] border border-[#09235C] bg-[#F8F8F8] px-6 py-2 cursor-pointer hover:bg-secondary transition ease-in-out duration-300"
-          style={{
-            color: "#09235C",
-            fontSize: "14px",
-            fontStyle: "normal",
-            fontWeight: 500,
-            lineHeight: "20px",
-            letterSpacing: "-0.15px",
-          }}
+        <Link
+          href="/products"
+          className="text-primary text-sm font-medium rounded-[8px] border border-primary bg-[#F8F8F8] px-6 py-2 cursor-pointer hover:bg-secondary transition ease-in-out duration-300"
         >
           Ver todos os produtos
-        </button>
+        </Link>
       </div>
     </div>
   );
