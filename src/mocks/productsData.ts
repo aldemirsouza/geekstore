@@ -66,4 +66,15 @@ export const mockProducts: Product[] = [
     bestPrice: "R$ 109.99",
     sellerPrice: "R$ 129.99",
   },
+  {
+    id: 6,
+    name: "Controller Wireless DualSense X2u7445547444",
+    image: "/assets/image3.png",
+    discount: "-20%",
+    highlight: "Promoção N1",
+    rating: 5,
+    reviews: 1092,
+    bestPrice: "R$ 189.99",
+    sellerPrice: "R$ 149.99",
+  },
 ];

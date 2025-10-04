@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product } from "@/mocks/productsData";
 import { useCart } from "@/hooks/useCart";
 import { useState } from "react";
+import toast from 'react-hot-toast';
 
 interface ProductCardProps {
   product: Product;
@@ -13,8 +14,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showMessage, setShowMessage] = useState<boolean>(false);
-  const message = `Produto ${product.name} adicionado ao carrinho!`
+  const message = `🎉 Produto ${product.name} adicionado ao carrinho!`;
 
   const handleAddToCart = () => {
     if (isLoading) return;
@@ -23,16 +23,18 @@ export function ProductCard({ product }: ProductCardProps) {
 
     setTimeout(() => {
       addToCart(product);
-      setIsLoading(false);
-      setShowMessage(true);
 
-      setTimeout(() => {
-        setIsLoading(false);
-        setShowMessage(false);
-      }, 4000);
+      toast.success(message, {
+        duration: 3000,
+        style: {
+          backgroundColor: '#E6FFFA',
+          color: '#09235C',
+          fontWeight: 'bold',
+        },
+      });
 
-    }, 800);
-
+      setIsLoading(false)
+    }, 1000);
   };
 
   return (
@@ -97,23 +99,6 @@ export function ProductCard({ product }: ProductCardProps) {
           </button>
         </div>
       </div>
-
-      {showMessage && (
-        <div
-          className={`
-          min-h-[74px]
-          p-2 absolute 
-          top-[50%] left-0 right-0
-          bg-green-600
-          text-sm text-white font-medium
-          transition-transform duration-300 ease-out
-          transform translate-y-full
-          ${showMessage ? 'opacity-100' : 'opacity-0 pointer-events-none'} 
-        `}
-        >
-          {message}
-        </div>
-      )}
     </div>
   )
 }

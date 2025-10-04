@@ -1,7 +1,8 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import { CartProvider } from '@/context/CartContext';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,19 @@ export default function RootLayout({
       >
         <CartProvider>
           {children}
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              className: '',
+              duration: 3000,
+              style: {
+                border: '1px solid #09235C',
+                padding: '16px',
+                color: '#09235C',
+              },
+            }}
+          >
+          </Toaster>
         </CartProvider>
       </body>
     </html>

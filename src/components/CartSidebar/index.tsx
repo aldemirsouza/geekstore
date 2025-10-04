@@ -5,9 +5,9 @@ import { useCart } from "@/hooks/useCart";
 import { CartViewer } from "@/components/CartViewer";
 
 export function CartSidebar() {
-  const { totalQuantity } = useCart();
+  const { cartCount } = useCart();
   const { isSidebarOpen, closeSidebar } = useCart();
-  const itemText = totalQuantity === 1 ? 'item' : 'itens';
+  const itemText = cartCount === 1 ? 'item' : 'itens';
 
   return (
     <>
@@ -22,14 +22,13 @@ export function CartSidebar() {
         className={`
           fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 
           transform transition-transform duration-500 ease-in-out
-          
           ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} 
         `}
       >
         <div className="p-4 flex flex-col h-full">
           <div className="flex justify-between items-center pb-4 border-b">
             <h3 className="text-sl font-bold text-[#09235C]">
-              Minha sacola ( {totalQuantity} {itemText} )
+              Minha sacola ( {cartCount} {itemText} )
             </h3>
             <button
               onClick={closeSidebar}
@@ -46,7 +45,7 @@ export function CartSidebar() {
           </div>
 
           <div className="p-4 border-t mt-auto">
-            <button className="w-full bg-[#F5AB00] text-[#09235C] font-semibold py-3 rounded-lg hover:brightness-90 transition">
+            <button className="w-full bg-[#F5AB00] text-[#09235C] font-semibold py-3 rounded-lg cursor-pointer hover:brightness-90 transition">
               Finalizar Compra
             </button>
           </div>

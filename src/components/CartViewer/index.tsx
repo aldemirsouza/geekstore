@@ -14,8 +14,13 @@ export function CartViewer() {
           {cartItems.map(item => (
             <li
               key={item.id}
-              className="flex justify-between items-center p-3 border-b last:border-b-0 bg-gray-50 rounded-md"
+              className="flex justify-between items-center p-3 border-b last:border-b-0 bg-gray-50 rounded-md gap-4"
             >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-12 h-12 object-cover"
+              />
               <span className="text-sm font-bold text-[#101828]">
                 {item.name}
               </span>
