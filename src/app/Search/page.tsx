@@ -19,6 +19,7 @@ const filterProducts = (products: Product[], query: string): Product[] => {
     product.name.toLowerCase().includes(lowerQuery)
   );
 };
+export const dynamic = 'force-dynamic';
 
 export default async function SearchPage(props: SearchPageProps) {
   const searchParams = await props.searchParams;
