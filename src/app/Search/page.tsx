@@ -4,7 +4,6 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { getAllProducts } from "@/mocks/productsData";
 import { Product } from "@/mocks/productsData";
 
-// NOVO TIPO: Envolve o objeto searchParams em uma Promise
 interface SearchPageProps {
   searchParams: Promise<{
     q?: string | string[];
