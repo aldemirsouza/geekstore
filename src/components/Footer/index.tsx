@@ -8,7 +8,7 @@ export function Footer() {
       <Newsletter />
 
       <footer className=" text-white pt-10 border-t border-[rgba(255,255,255,0.10)]">
-        <div className="px-6 max-w-[1055px] mx-auto flex flex-col sm:flex-row sm:justify-between gap-0 sm:gap-10 sm:px-0">
+        <div className="px-6 max-w-[1055px] mx-auto flex flex-col sm:flex-row sm:justify-between gap-0 sm:gap-10 sm:px-4">
 
           <div className="flex-1 flex flex-col gap-6">
             <h2 className="text-[24px] font-bold leading-[32px] tracking-[-0.312px]">GeekStore</h2>
@@ -118,7 +118,7 @@ export function Footer() {
 
         <div className="border-t border-[rgba(255,255,255,0.10)] mt-12">
           <div
-            className="max-w-[1055px] mx-auto flex flex-col items-center justify-center text-center py-6 gap-4 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+            className="max-w-[1055px] mx-auto flex flex-col items-center justify-center text-center py-6 gap-4 sm:flex-row sm:px-4 sm:items-center sm:justify-between sm:text-left">
             <p
               className="text-[rgba(255,255,255,0.60)] text-[14px] font-normal leading-5 tracking-[-0.15px] py-6 sm:py-0"
             >

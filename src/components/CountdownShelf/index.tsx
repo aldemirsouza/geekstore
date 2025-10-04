@@ -72,13 +72,13 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
 
                 <div className="flex flex-col items-center">
                   <span className="text-3xl font-bold text-red-500">{String(value)}</span>
-                  <span className="text-xs font-medium text-gray-700 uppercase">
+                  <span className="text-xs font-medium text-gray-600 uppercase">
                     {unitTranslations[unit as keyof typeof unitTranslations]}
                   </span>
                 </div>
 
                 {index < Object.keys(timeLeft!).length - 1 && (
-                  <span className="text-2xl font-bold text-primary">:</span>
+                  <span className="text-2xl font-bold text-black">:</span>
                 )}
               </React.Fragment>
             ))}

@@ -29,7 +29,7 @@ export function BenefitsBar() {
 
   return (
     <div className="bg-white border-b border-gray-200">
-      <div className=" max-w-[1055px] container mx-auto py-6">
+      <div className=" max-w-[1055px] container mx-auto md:px-4 py-6">
         <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide md:hidden">
           {benefits.map((item, idx) => (
             <div

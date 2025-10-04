@@ -6,8 +6,8 @@ export interface Product {
   highlight: string;
   rating: number;
   reviews: number;
-  bestPrice: string;
-  sellerPrice: string;
+  bestPrice: number;
+  sellerPrice: number;
 }
 
 export const mockProducts: Product[] = [
@@ -19,8 +19,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 4,
     reviews: 892,
-    bestPrice: "R$ 89.99",
-    sellerPrice: "R$ 129.99",
+    bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
   {
     id: 2,
@@ -30,8 +30,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 4,
     reviews: 892,
-    bestPrice: "R$ 89.99",
-    sellerPrice: "R$ 129.99",
+    bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
   {
     id: 3,
@@ -41,8 +41,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 4,
     reviews: 892,
-    bestPrice: "R$ 89.99",
-    sellerPrice: "R$ 129.99",
+     bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
   {
     id: 4,
@@ -52,8 +52,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 4,
     reviews: 892,
-    bestPrice: "R$ 89.99",
-    sellerPrice: "R$ 129.99",
+    bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
   {
     id: 5,
@@ -63,8 +63,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 4,
     reviews: 892,
-    bestPrice: "R$ 109.99",
-    sellerPrice: "R$ 129.99",
+    bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
   {
     id: 6,
@@ -74,8 +74,8 @@ export const mockProducts: Product[] = [
     highlight: "Promoção N1",
     rating: 5,
     reviews: 1092,
-    bestPrice: "R$ 189.99",
-    sellerPrice: "R$ 149.99",
+    bestPrice: 89.99,
+    sellerPrice: 129.99,
   },
 ];
 

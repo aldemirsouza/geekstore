@@ -83,10 +83,10 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <div className="flex flex-row items-center gap-2">
           <span className="text-lg font-bold text-[#09235C]">
-            {product.bestPrice}
+            R$ {product.bestPrice.toFixed(2)}
           </span>
           <span className="text-sm line-through text-[#6A7282]">
-            {product.sellerPrice}
+            R$ {product.sellerPrice.toFixed(2)}
           </span>
         </div>
 

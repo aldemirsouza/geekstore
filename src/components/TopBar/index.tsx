@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function TopBar() {
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden sm:px-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-2 gap-2 md:gap-0  max-w-[1055px]">
 
         <div className="flex items-center gap-2 animate-slide-in ">
