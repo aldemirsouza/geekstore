@@ -10,7 +10,6 @@ export function SEOBlock() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Coluna 1 */}
         <div>
           <h3 className="text-[#101828] font-bold text-[20px] leading-[28px] tracking-[-0.449px] mb-2">
             Os Melhores Jogos e Consoles
@@ -21,7 +20,6 @@ export function SEOBlock() {
           </p>
         </div>
 
-        {/* Coluna 2 */}
         <div>
           <h3 className="text-[#101828] font-bold text-[20px] leading-[28px] tracking-[-0.449px] mb-2">
             Acessórios e Produtos Geek

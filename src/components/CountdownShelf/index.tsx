@@ -40,13 +40,10 @@ const calculateTimeLeft = (targetDateString: string): TimeLeft | null => {
 };
 
 export function CountdownShelf({ targetDateString, title, description }: CountdownShelfProps) {
-
-  // 1. Inicialização Segura: useState com null, isMounted para controle
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // 2. Carrega o valor inicial e inicia o timer APENAS no cliente
     setTimeLeft(calculateTimeLeft(targetDateString));
     setIsMounted(true);
 
@@ -92,7 +89,6 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
       </React.Fragment>
     ));
   };
-
 
   return (
     <section className="pt-8">

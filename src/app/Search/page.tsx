@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/components/ProductGrid";
-import { getAllProducts } from "@/mocks/productsData"; // Adapte a função
+import { getAllProducts } from "@/mocks/productsData";
 import { Product } from "@/mocks/productsData";
 
 interface SearchPageProps {

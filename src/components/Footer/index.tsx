@@ -132,10 +132,10 @@ export function Footer() {
                   <a
                     href=""
                     className="
-              text-[rgba(255,255,255,0.60)]
-              text-[14px] font-normal leading-5 tracking-[-0.15px]
-              transition-colors duration-300 hover:text-[#F5AB00]
-            "
+                      text-[rgba(255,255,255,0.60)]
+                      text-[14px] font-normal leading-5 tracking-[-0.15px]
+                      transition-colors duration-300 hover:text-[#F5AB00]
+                    "
                   >
                     Política de Privacidade
                   </a>
@@ -144,10 +144,10 @@ export function Footer() {
                   <a
                     href=""
                     className="
-              text-[rgba(255,255,255,0.60)]
-              text-[14px] font-normal leading-5 tracking-[-0.15px]
-              transition-colors duration-300 hover:text-[#F5AB00]
-            "
+                    text-[rgba(255,255,255,0.60)]
+                    text-[14px] font-normal leading-5 tracking-[-0.15px]
+                    transition-colors duration-300 hover:text-[#F5AB00]
+                  "
                   >
                     Termos de Uso
                   </a>
@@ -156,10 +156,10 @@ export function Footer() {
                   <a
                     href=""
                     className="
-              text-[rgba(255,255,255,0.60)]
-              text-[14px] font-normal leading-5 tracking-[-0.15px]
-              transition-colors duration-300 hover:text-[#F5AB00]
-            "
+                    text-[rgba(255,255,255,0.60)]
+                    text-[14px] font-normal leading-5 tracking-[-0.15px]
+                    transition-colors duration-300 hover:text-[#F5AB00]
+                  "
                   >
                     Cookies
                   </a>

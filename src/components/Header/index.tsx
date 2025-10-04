@@ -18,13 +18,17 @@ export function Header() {
 
       <div className="max-w-[1055px] container mx-auto px-4 ms:px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-t border-gray-200">
 
-        <div className="flex justify-center md:justify-start items-center w-full md:w-auto relative">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="absolute left-0 md:hidden"
-          >
-            {isMenuOpen ? <X size={24} color="#000000" /> : <MenuIcon size={24} color="#000000" />}
-          </button>
+        <div className="flex justify-center items-center md:justify-start w-full md:w-auto relative">
+          <div className="absolute left-0 md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="mt-2"
+            >
+              {isMenuOpen ? <X size={24} color="#000000" /> : <MenuIcon size={24} color="#000000" />}
+            </button>
+
+            <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          </div>
 
           <Link href="/">
             <h1 className="text-[24px] font-extrabold text-primary cursor-pointer">
@@ -54,17 +58,8 @@ export function Header() {
         </div>
       </div>
 
-      <div className="hidden md:block w-full">
-        <Menu />
-      </div>
-
+      <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <CartSidebar />
-
-      {isMenuOpen && (
-        <div className="md:hidden px-4 pb-4">
-          <Menu />
-        </div>
-      )}
     </header>
   );
 }
