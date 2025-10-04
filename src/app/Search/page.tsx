@@ -6,7 +6,8 @@ import { Product } from "@/mocks/productsData";
 
 interface SearchPageProps {
   searchParams: {
-    q?: string;
+    q?: string | string[];
+    [key: string]: string | string[] | undefined;
   };
 }
 
@@ -19,8 +20,16 @@ const filterProducts = (products: Product[], query: string): Product[] => {
   );
 };
 
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const searchQuery = searchParams.q || '';
+  const queryValue = searchParams.q;
+
+  const rawQueryValue = Array.isArray(queryValue)
+    ? queryValue[0]
+    : queryValue;
+
+  const searchQuery: string = rawQueryValue ?? '';
+
   const allProducts = await getAllProducts();
   const filteredProducts = filterProducts(allProducts, searchQuery);
 

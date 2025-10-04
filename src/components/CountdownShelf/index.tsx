@@ -92,7 +92,7 @@ export function CountdownShelf({ targetDateString, title, description }: Countdo
 
   return (
     <section className="pt-8">
-      <div className="max-w-[1055px] mx-auto px-2 sm:px-0">
+      <div className="max-w-[987px] mx-auto px-2 sm:px-0">
 
         <div className="flex flex-col sm:flex-row justify-between items-center mb-2 p-4 bg-gray-50 border-l-4 border-secondary rounded-lg shadow-sm">
           <div className="text-center sm:text-left mb-4 sm:mb-0">

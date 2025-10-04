@@ -46,7 +46,7 @@ export function Search() {
 
   const handleSuggestionClick = (productName: string) => {
     setIsFocused(false);
-    router.push(`/produtos/${productName.toLowerCase().replace(/\s/g, '-')}`);
+    router.push(`/products/${productName.toLowerCase().replace(/\s/g, '-')}`);
   };
 
   const showDropdown = isFocused && (query.length > 0 || suggestions.length > 0);
