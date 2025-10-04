@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <>
       <Header />
-      <div className="max-w-[1055px] mx-auto py-10">
+      <div className="max-w-[1055px] mx-auto py-10 px-4 md:px-0">
         <h1 className="text-3xl font-bold text-[#09235C] mb-4">
           Resultados da Busca para: "<span className="text-primary">{searchQuery}</span>"
         </h1>
