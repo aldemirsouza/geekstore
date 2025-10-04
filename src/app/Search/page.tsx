@@ -20,7 +20,6 @@ const filterProducts = (products: Product[], query: string): Product[] => {
   );
 };
 
-
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const queryValue = searchParams.q;
 
