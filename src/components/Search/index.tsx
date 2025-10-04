@@ -28,7 +28,7 @@ export function Search() {
 
     if (query.trim()) {
       setIsFocused(false);
-      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+      router.push(`/busca?q=${encodeURIComponent(query.trim())}`);
     }
   };
 
